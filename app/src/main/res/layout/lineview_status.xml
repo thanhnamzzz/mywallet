@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginRight="-10dp"
+        android:layout_marginBottom="-5dp"
+        android:background="@color/bg_line2"
+        app:layout_constraintBottom_toBottomOf="@id/noiDung"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginBottom="-5dp"
+        android:background="@color/bg_line2"
+        app:layout_constraintBottom_toBottomOf="@id/noiDung"
+        app:layout_constraintEnd_toStartOf="@id/x1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/x1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/x2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/x3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/x1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_day_inline" />
+
+        <TextView
+            android:id="@+id/ngayChiTieu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày"
+            android:textColor="@color/textapp"
+            android:textSize="@dimen/_8sdp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/loaiTien"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="Loại tiền"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toStartOf="@id/x3"
+        app:layout_constraintStart_toEndOf="@id/x1"
+        app:layout_constraintTop_toTopOf="@id/lineView" />
+
+    <TextView
+        android:id="@+id/noiDung"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:text="Nội dung"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintEnd_toStartOf="@id/x3"
+        app:layout_constraintStart_toEndOf="@id/x1"
+        app:layout_constraintTop_toBottomOf="@id/loaiTien" />
+
+    <TextView
+        android:id="@+id/soTien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="Số tiền"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintRight_toLeftOf="@id/x2"
+        app:layout_constraintTop_toTopOf="@id/lineView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

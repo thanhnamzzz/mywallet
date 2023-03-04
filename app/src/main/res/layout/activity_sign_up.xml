@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_line1"
+    tools:context=".SignUpActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/x1"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/y1"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/y2"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ariali"
+        android:text="Tên tài khoản"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="@id/x1"
+        app:layout_constraintLeft_toLeftOf="@id/y1"/>
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/bg_edt"
+        android:padding="@dimen/_3sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_9sdp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/tv1"
+        app:layout_constraintLeft_toLeftOf="@id/y1"
+        app:layout_constraintRight_toLeftOf="@id/y2"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/ariali"
+        android:text="Mật khẩu"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/edtEmail"
+        app:layout_constraintLeft_toLeftOf="@id/y1" />
+
+    <EditText
+        android:id="@+id/edtPassword1"
+        android:inputType="textPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_edt"
+        android:padding="@dimen/_3sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_9sdp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/tv2"
+        app:layout_constraintLeft_toLeftOf="@id/y1"
+        app:layout_constraintRight_toLeftOf="@id/y2"/>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/ariali"
+        android:text="Nhập lại mật khẩu"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/edtPassword1"
+        app:layout_constraintLeft_toLeftOf="@id/y1"/>
+
+    <EditText
+        android:id="@+id/edtPassword2"
+        android:inputType="textPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/bg_edt"
+        android:padding="@dimen/_3sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_9sdp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/tv3"
+        app:layout_constraintLeft_toLeftOf="@id/y1"
+        app:layout_constraintRight_toLeftOf="@id/y2"/>
+    <Button
+        android:id="@+id/btnSignUp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtPassword2"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:textSize="@dimen/_8sdp"
+        android:text="Đăng ký"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_32sdp"/>
+    <Button
+        android:id="@+id/btnCancel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSignUp"
+        android:textSize="@dimen/_8sdp"
+        android:text="Hủy"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_32sdp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
