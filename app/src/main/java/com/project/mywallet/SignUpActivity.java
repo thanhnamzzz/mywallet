@@ -1,6 +1,5 @@
 package com.project.mywallet;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,14 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.project.mywallet.login_packega.SignUpPresenter;
-import com.project.mywallet.login_packega.SignUpView;
+import com.project.mywallet.login_package.SignUpPresenter;
+import com.project.mywallet.login_package.SignUpView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,44 +48,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     private void inView() {
         ButterKnife.bind(this);
-//        edtPassword1.setText(null);
-//        edtPassword2.setText(null);
+        edtPassword1.setText(null);
+        edtPassword2.setText(null);
 
         signUpPresenter = new SignUpPresenter(this);
         btnSignUp.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
-//        btnSignUp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String username = null;
-//                String password = null;
-//                String password1 = edtPassword1.getText().toString().trim();
-//                String password2 = edtPassword2.getText().toString().trim();
-//                if (edtUserName.getText().toString().trim()!=null && password1.equals(password2) && password1 != null && password2 != null) {
-//                    username = edtUserName.getText().toString();
-//                    password = edtPassword1.getText().toString();
-//                    createAccount(username, password);
-//                    registermessage("Đăng ký thành công.");
-//                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-//                    startActivity(intent);
-//                } else {
-//                    registermessage("Tên đăng nhập hoặc mật khẩu không hợp lệ. Nhập lại.");
-//                }
-//            }
-//        });
-//        btnCancel.setOnClickListener(view -> onBackPressed());
-//    }
-
-//    private void createAccount(String username, String password) {
-//        mAuth.createUserWithEmailAndPassword(username,password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()){
-//                            FirebaseUser user = mAuth.getCurrentUser();
-//                        }
-//                    }
-//                });
     }
 
     @Override

@@ -14,9 +14,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.project.mywallet.login_packega.LoginPresenter;
-import com.project.mywallet.login_packega.LoginView;
-import com.project.mywallet.login_packega.SignUpPresenter;
+import com.project.mywallet.login_package.LoginPresenter;
+import com.project.mywallet.login_package.LoginView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,29 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLogIn.setOnClickListener(this);
 
         loginPresenter = new LoginPresenter(this);
-
-//        btnSignUp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String email = edtEmail.getText().toString().trim();
-//                String password = edtPassword.getText().toString().trim();
-//                if (email != null && password != null) {
-//                    signInWithEmailAndPassword(email, password);
-//                } else {
-//                    edtEmail.setText(null);
-//                    edtPassword.setText(null);
-//                    toastmessage("Đăng nhập không thành công.");
-//                }
-//            }
-//        });
-//
-//        btnLogIn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     @Override
@@ -112,23 +88,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
-
-//    private void signInWithEmailAndPassword(String email, String password) {
-//        mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()){
-//                            boolean isRegistered = false;
-//                            FirebaseUser user = mAuth.getCurrentUser();
-//                            toastmessage("Đăng nhập thành công.");
-//                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-//                            intent.putExtra("username", email);
-//                            startActivity(intent);
-//                        }
-//                    }
-//                });
-//    }
 
     private void toastmessage(String text) {
         Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();

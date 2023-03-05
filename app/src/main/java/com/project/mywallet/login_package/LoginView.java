@@ -1,4 +1,4 @@
-package com.project.mywallet.login_packega;
+package com.project.mywallet.login_package;
 
 public interface LoginView {
     void loginSuccess();

@@ -4,4 +4,5 @@
     <string name="dont_have_account">Chưa có tài khoản? Đăng ký ngay.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pick_up_date">dd/mm/yyyy</string>
 </resources>

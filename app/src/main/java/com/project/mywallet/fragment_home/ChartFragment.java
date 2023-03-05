@@ -1,4 +1,4 @@
-package com.project.mywallet;
+package com.project.mywallet.fragment_home;
 
 import android.os.Bundle;
 
@@ -8,23 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class DayFragment extends Fragment {
+import com.project.mywallet.R;
 
-    public static DayFragment newInstance() {
 
-        Bundle args = new Bundle();
+public class ChartFragment extends Fragment {
 
-        DayFragment fragment = new DayFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public DayFragment() {
+    public ChartFragment() {
         // Required empty public constructor
     }
-    public static DayFragment newInstance(String param1, String param2) {
-        DayFragment fragment = new DayFragment();
+
+    public static ChartFragment newInstance() {
+        
         Bundle args = new Bundle();
+        
+        ChartFragment fragment = new ChartFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -40,6 +37,6 @@ public class DayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_day, container, false);
+        return inflater.inflate(R.layout.fragment_chart, container, false);
     }
 }

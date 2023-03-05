@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_home"
-    tools:context=".AccountFragment">
+    android:background="@color/bg_line2"
+    tools:context=".fragment_home.AccountFragment">
 
     <Button
         android:id="@+id/btnSignOut"
         android:layout_width="@dimen/_70sdp"
         android:layout_height="@dimen/_32sdp"
         android:text="Đăng xuất"
+        android:textStyle="bold"
         android:textSize="@dimen/_8sdp"
         android:fontFamily="@font/arial"
         app:layout_constraintBottom_toBottomOf="parent"

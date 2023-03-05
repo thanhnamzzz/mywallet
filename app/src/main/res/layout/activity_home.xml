@@ -17,7 +17,7 @@
         android:id="@+id/bnv_Home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/bg_home"
+        android:background="@color/bg_line2"
         app:itemIconTint="@color/bg_navigation_selector"
         app:itemTextColor="@color/bg_navigation_selector"
         app:labelVisibilityMode="selected"

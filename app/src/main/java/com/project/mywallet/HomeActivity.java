@@ -5,12 +5,19 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.project.mywallet.fragment_home.AccountFragment;
+import com.project.mywallet.fragment_home.ChartFragment;
+import com.project.mywallet.fragment_home.DayFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,10 +42,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ButterKnife.bind(this);
         bnv_Home.setOnItemSelectedListener(this::onNavigationItemSelected);
         actionBar = getSupportActionBar();
-
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.bg_line2)));
         mFragment = DayFragment.newInstance();
         if (actionBar != null) {
-            actionBar.setTitle("Hàng ngày");
+            SpannableString s =new SpannableString("Hàng ngày");
+            s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.textapp)),0,s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            actionBar.setTitle(s);
         }
         loadFragment();
     }
@@ -53,7 +62,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 mFragment = null;
                 mFragment = DayFragment.newInstance();
                 if (actionBar != null) {
-                    actionBar.setTitle("Hàng ngày");
+                    SpannableString s =new SpannableString("Hàng ngày");
+                    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.textapp)),0,s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    actionBar.setTitle(s);
                 }
                 loadFragment();
                 return true;
@@ -62,7 +73,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 mFragment = null;
                 mFragment = ChartFragment.newInstance();
                 if (actionBar != null) {
-                    actionBar.setTitle("Thống kê");
+                    SpannableString s =new SpannableString("Thống kê");
+                    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.textapp)),0,s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    actionBar.setTitle(s);
                 }
                 loadFragment();
                 return true;
@@ -71,7 +84,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 mFragment = null;
                 mFragment = AccountFragment.newInstance();
                 if (actionBar != null) {
-                    actionBar.setTitle("Tài khoản");
+                    SpannableString s =new SpannableString("Tài khoản");
+                    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.textapp)),0,s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    actionBar.setTitle(s);
                 }
                 loadFragment();
                 return true;

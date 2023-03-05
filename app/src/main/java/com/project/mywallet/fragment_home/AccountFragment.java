@@ -1,4 +1,4 @@
-package com.project.mywallet;
+package com.project.mywallet.fragment_home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.project.mywallet.MainActivity;
+import com.project.mywallet.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,7 +65,7 @@ public class AccountFragment extends Fragment {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(getActivity(),"Đăng xuất thành công!",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getActivity(),MainActivity.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
