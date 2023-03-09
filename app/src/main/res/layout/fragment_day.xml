@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_line2"
+    android:background="@color/bg_app"
     tools:context=".fragment_home.DayFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -17,8 +17,8 @@
         android:layout_height="match_parent">
         <Button
             android:id="@+id/btnAdd"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/ic_add_circle"

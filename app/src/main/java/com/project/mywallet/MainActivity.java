@@ -4,7 +4,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -57,8 +61,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void inView() {
         ButterKnife.bind(this);
         ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.bg_app)));
         if (actionBar != null) {
-            actionBar.setTitle("Đăng nhập");
+            SpannableString s =new SpannableString("Đăng nhập");
+            s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.textapp)),0,s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            actionBar.setTitle(s);
         }
 
         btnSignUp.setOnClickListener(this);

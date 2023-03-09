@@ -17,7 +17,7 @@
     <color name="textTaiSan">#00E676</color>
     <color name="bg_line1">#2B2B2B</color>
     <color name="bg_home">#D2D2D2</color>
-    <color name="bg_line2">#1E1E1E</color>
+    <color name="bg_app">#1E1E1E</color>
     <color name="strokeline">#969696</color>
     <color name="color_selection">#FF0000</color>
 </resources>

@@ -40,7 +40,7 @@
 
         <Button
             android:id="@+id/btnLogIn"
-            android:layout_width="@dimen/_80sdp"
+            android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_32sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:padding="@dimen/_5sdp"

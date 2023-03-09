@@ -1,41 +1,40 @@
 package com.project.mywallet.fragment_home;
 
-import static android.app.ProgressDialog.show;
-
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.project.mywallet.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DayFragment extends Fragment {
+public class DayFragment extends Fragment implements SpendingInterface {
 
     @BindView(R.id.btnAdd)
     Button btnAdd;
@@ -43,19 +42,23 @@ public class DayFragment extends Fragment {
     RecyclerView rvDay;
 
     final Calendar calendar = Calendar.getInstance();
+    String spinnerSelection;
+    boolean isIncome = true;
+
+    private AlertDialog alertDialog;
+    private SpendingPresenter spendingPresenter;
     private ActionBar actionBar;
+    private String listClassify[] = {"Tiền mặt", "Tài khoản ngân hàng"};
+    private static final String TAG = "DayFragment";
 
     public static DayFragment newInstance() {
-
         Bundle args = new Bundle();
-
         DayFragment fragment = new DayFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     public DayFragment() {
-        // Required empty public constructor
     }
 
     public static DayFragment newInstance(String param1, String param2) {
@@ -94,17 +97,38 @@ public class DayFragment extends Fragment {
     private void showDialogAdd() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        // Sử dụng 2 view khác nhau nên nó k nhận được sự kiện ở đây
         View view = inflater.inflate(R.layout.dialog_add_spending, null);
         builder.setView(view);
-//        builder.setView(R.layout.dialog_add_spending);
-        EditText edtClassify = view.findViewById(R.id.edtClassify);
+        spendingPresenter = new SpendingPresenter(this);
+
+        Spinner spinner = view.findViewById(R.id.spnAccount);
+        ArrayAdapter adapter =new ArrayAdapter(getActivity(),R.layout.layout_select_item, listClassify);
+        adapter.setDropDownViewResource(R.layout.layout_dropdown_custom);
+        spinner.setAdapter(adapter);
+
+//        EditText edtClassify = view.findViewById(R.id.spnClassify);
         EditText edtContent = view.findViewById(R.id.edtContent);
         EditText edtAmount = view.findViewById(R.id.edtAmount);
         EditText edtDaySpending = view.findViewById(R.id.edtDaySpending);
         TextView tvCancel = view.findViewById(R.id.tvCancel);
-        TextView tvChoose = view.findViewById(R.id.tvChoose);
-        AlertDialog alertDialog = builder.create();
+        TextView tvAddSpending = view.findViewById(R.id.tvAddSpending);
+        Switch swChangeClassify = view.findViewById(R.id.swChangeClassify);
+
+        swChangeClassify.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    isIncome = true;
+                    swChangeClassify.setText("Thu ");
+                } else {
+                    isIncome = false;
+                    swChangeClassify.setText("Chi ");
+                }
+            }
+        });
+
+        alertDialog = builder.create();
+
         //Pick khung edtDaySpending hiện bảng lịch ngày tháng năm.
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -131,10 +155,22 @@ public class DayFragment extends Fragment {
             }
         });
 
-        tvChoose.setOnClickListener(new View.OnClickListener() {
+        tvAddSpending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addUserSpending(edtClassify,edtContent,edtAmount,edtDaySpending);
+                if (!spinnerSelection.isEmpty() || !"".equals(spinnerSelection)){
+                    spendingPresenter.pushSpending(spinnerSelection,edtContent,edtAmount,edtDaySpending,isIncome);
+                }
+            }
+        });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
+                spinnerSelection = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
@@ -147,13 +183,13 @@ public class DayFragment extends Fragment {
         alertDialog.show();
     }
 
-    private void addUserSpending(EditText edtClassify, EditText edtContent, EditText edtAmount, EditText edtDaySpending) {
-        UserSpending userSpending = new UserSpending();
-        userSpending.setClassify(edtClassify.getText().toString());
-        userSpending.setContent(edtContent.getText().toString());
-        userSpending.setAmount(Integer.parseInt(edtAmount.getText().toString()));
-        userSpending.setDaySpending(edtDaySpending.getText().toString());
-        Log.d("TAG", "addUserSpending: " + userSpending);
+    @Override
+    public void onSucces() {
+        alertDialog.dismiss();
     }
 
+    @Override
+    public void onFailed() {
+        Toast.makeText(getActivity(),"Nhập số tiền", Toast.LENGTH_LONG).show();
+    }
 }

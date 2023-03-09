@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ButterKnife.bind(this);
         bnv_Home.setOnItemSelectedListener(this::onNavigationItemSelected);
         actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.bg_line2)));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.bg_app)));
         mFragment = DayFragment.newInstance();
         if (actionBar != null) {
             SpannableString s =new SpannableString("Hàng ngày");

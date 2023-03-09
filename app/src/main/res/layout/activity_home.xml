@@ -17,14 +17,17 @@
         android:id="@+id/bnv_Home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/bg_line2"
+        android:background="@color/bg_app"
         app:itemIconTint="@color/bg_navigation_selector"
         app:itemTextColor="@color/bg_navigation_selector"
         app:labelVisibilityMode="selected"
+        app:itemTextAppearanceActive="@style/menu_text_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guide_navigation"
+        app:layout_constraintVertical_bias="0.0"
         app:menu="@menu/bottom_navigation" />
 
     <FrameLayout

@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_dialog"
-    android:padding="@dimen/_10sdp"
-    >
+    android:padding="@dimen/_10sdp">
 
     <LinearLayout
         android:id="@+id/lnTitle"
@@ -41,16 +40,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loại tiền"
-        android:textStyle="bold"
+        android:text="Tài khoản"
         android:textColor="@color/textapp"
         android:textSize="@dimen/_9sdp"
-        app:layout_constraintBottom_toBottomOf="@id/edtClassify"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/spnAccount"
         app:layout_constraintLeft_toLeftOf="@id/lnTitle"
         app:layout_constraintTop_toBottomOf="@id/lnTitle" />
 
-    <EditText
-        android:id="@+id/edtClassify"
+    <Spinner
+        android:id="@+id/spnAccount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/textapp"
@@ -63,12 +62,34 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Loại tiền"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_9sdp"
+        app:layout_constraintBottom_toBottomOf="@id/swChangeClassify"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spnAccount" />
+
+
+    <Switch
+        android:id="@+id/swChangeClassify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Thu "
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintLeft_toLeftOf="@id/x2"
+        app:layout_constraintTop_toBottomOf="@id/spnAccount" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Nội dung"
         android:textColor="@color/textapp"
         android:textSize="@dimen/_9sdp"
         app:layout_constraintBottom_toBottomOf="@id/edtContent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtClassify" />
+        app:layout_constraintTop_toBottomOf="@id/swChangeClassify" />
 
     <EditText
         android:id="@+id/edtContent"
@@ -79,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/x2"
         app:layout_constraintStart_toEndOf="@id/x2"
-        app:layout_constraintTop_toBottomOf="@+id/edtClassify" />
+        app:layout_constraintTop_toBottomOf="@+id/swChangeClassify" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -142,7 +163,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvChoose"
+            android:id="@+id/tvAddSpending"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_5sdp"
