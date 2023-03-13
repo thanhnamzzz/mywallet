@@ -15,9 +15,9 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.project.mywallet.fragment_home.AccountFragment;
-import com.project.mywallet.fragment_home.ChartFragment;
-import com.project.mywallet.fragment_home.DayFragment;
+import com.project.mywallet.fragment_account.AccountFragment;
+import com.project.mywallet.fragment_chart.ChartFragment;
+import com.project.mywallet.fragment_dayly.DayFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

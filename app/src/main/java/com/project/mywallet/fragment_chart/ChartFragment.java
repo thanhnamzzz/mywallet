@@ -1,4 +1,4 @@
-package com.project.mywallet.fragment_home;
+package com.project.mywallet.fragment_chart;
 
 import android.os.Bundle;
 

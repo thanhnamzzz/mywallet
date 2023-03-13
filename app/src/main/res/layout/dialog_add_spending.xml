@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tvTittle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thêm chi tiêu"
@@ -84,15 +85,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nội dung"
+        android:text="Thể loại"
         android:textColor="@color/textapp"
         android:textSize="@dimen/_9sdp"
-        app:layout_constraintBottom_toBottomOf="@id/edtContent"
+        app:layout_constraintBottom_toBottomOf="@id/spnCategory"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/swChangeClassify" />
 
-    <EditText
-        android:id="@+id/edtContent"
+    <Spinner
+        android:id="@+id/spnCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/textapp"
@@ -110,7 +111,7 @@
         android:textSize="@dimen/_9sdp"
         app:layout_constraintBottom_toBottomOf="@id/edtAmount"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtContent" />
+        app:layout_constraintTop_toBottomOf="@id/spnCategory" />
 
     <EditText
         android:id="@+id/edtAmount"
@@ -122,7 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/x2"
         app:layout_constraintStart_toEndOf="@id/x2"
-        app:layout_constraintTop_toBottomOf="@+id/edtContent" />
+        app:layout_constraintTop_toBottomOf="@+id/spnCategory" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -146,12 +147,34 @@
         app:layout_constraintStart_toEndOf="@id/x2"
         app:layout_constraintTop_toBottomOf="@+id/edtAmount" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ghi chú"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_9sdp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtDaySpending"
+        app:layout_constraintBottom_toBottomOf="@id/edtNote"/>
+
+    <EditText
+        android:id="@+id/edtNote"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_9sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/x2"
+        app:layout_constraintStart_toEndOf="@id/x2"
+        app:layout_constraintTop_toBottomOf="@+id/edtDaySpending" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/edtDaySpending">
+        app:layout_constraintTop_toBottomOf="@id/edtNote">
 
         <TextView
             android:id="@+id/tvCancel"

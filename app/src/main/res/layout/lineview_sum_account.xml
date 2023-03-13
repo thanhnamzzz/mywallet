@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/vTop"
+        app:layout_constraintTop_toBottomOf="@id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/strokeline"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginRight="-10dp"
+        android:layout_marginBottom="-5dp"
+        android:background="@color/bg_lineview"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/x1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/x2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/x3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+
+    <TextView
+        android:id="@+id/tvAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:text="Tài khoản"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_9sdp"
+        app:layout_constraintEnd_toStartOf="@id/x3"
+        app:layout_constraintStart_toEndOf="@id/x1"
+        app:layout_constraintTop_toTopOf="@id/lineView"
+        app:layout_constraintBottom_toBottomOf="@id/lineView"/>
+
+    <TextView
+        android:id="@+id/tvSumAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số tiền"
+        android:textColor="@color/textapp"
+        android:textSize="@dimen/_9sdp"
+        app:layout_constraintRight_toLeftOf="@id/x2"
+        app:layout_constraintTop_toTopOf="@id/lineView"
+        app:layout_constraintBottom_toBottomOf="@id/lineView"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

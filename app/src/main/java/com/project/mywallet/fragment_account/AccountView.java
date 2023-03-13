@@ -1,22 +1,17 @@
-package com.project.mywallet.fragment_home;
+package com.project.mywallet.fragment_account;
 
-public class UserSpending {
-
+public class AccountView {
     private String account;
-    private String content;
     private int amount;
-    private String daySpending;
     private boolean isIncome;
 
-    public UserSpending( String account, String content, int amount, String daySpending, boolean isIncome) {
-        this.account = account;
-        this.content = content;
-        this.amount = amount;
-        this.daySpending = daySpending;
-        this.isIncome = isIncome;
+    public AccountView() {
     }
 
-    public UserSpending() {
+    public AccountView(String account, int amount, boolean isIncome) {
+        this.account = account;
+        this.amount = amount;
+        this.isIncome = isIncome;
     }
 
     public String getAccount() {
@@ -27,28 +22,12 @@ public class UserSpending {
         this.account = account;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public int getAmount() {
         return amount;
     }
 
     public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    public String getDaySpending() {
-        return daySpending;
-    }
-
-    public void setDaySpending(String daySpending) {
-        this.daySpending = daySpending;
     }
 
     public boolean isIncome() {
@@ -61,11 +40,9 @@ public class UserSpending {
 
     @Override
     public String toString() {
-        return "UserSpending{" +
+        return "AccountView{" +
                 "account='" + account + '\'' +
-                ", content='" + content + '\'' +
                 ", amount=" + amount +
-                ", daySpending='" + daySpending + '\'' +
                 ", isIncome=" + isIncome +
                 '}';
     }
