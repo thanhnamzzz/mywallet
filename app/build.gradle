@@ -4,14 +4,7 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        debug {
-            storeFile file('D:\\00.Hoc Java Android\\Android\\Android50_MyWallet\\app\\firebase_mywaller.jks')
-            storePassword '1234566'
-            keyAlias 'mywallet'
-            keyPassword '1234566'
-        }
-    }
+
     namespace 'com.project.mywallet'
     compileSdk 32
 

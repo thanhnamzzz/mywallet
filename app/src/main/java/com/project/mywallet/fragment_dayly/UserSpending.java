@@ -1,5 +1,7 @@
 package com.project.mywallet.fragment_dayly;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class UserSpending {
@@ -7,7 +9,7 @@ public class UserSpending {
     private String id;
     private String account;
     private String category;
-    private int amount;
+    private long amount;
     private String daySpending;
     private String note;
     private boolean isIncome;
@@ -45,11 +47,11 @@ public class UserSpending {
         this.category = category;
     }
 
-    public int getAmount() {
+    public long getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(long amount) {
         this.amount = amount;
     }
 
@@ -84,5 +86,17 @@ public class UserSpending {
     @Override
     public String toString() {
         return "UserSpending{" + "account='" + account + '\'' + ", category='" + category + '\'' + ", amount=" + amount + ", daySpending='" + daySpending + '\'' + ", note='" + note + '\'' + ", isIncome=" + isIncome + '}';
+    }
+
+    public HashMap<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("account", account);
+        result.put("category", category);
+        result.put("amount", amount);
+        result.put("daySpending", daySpending);
+        result.put("note", note);
+        result.put("isIncome", isIncome);
+
+        return result;
     }
 }

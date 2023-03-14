@@ -2,13 +2,6 @@ package com.project.mywallet.fragment_dayly;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +16,12 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -132,6 +131,7 @@ public class DayFragment extends Fragment implements SpendingInterface, IClickIt
                 mListSpendingHistory.clear();
                 for (DataSnapshot child : snapshot.getChildren()) {
                     ViewSpending viewSpending = child.getValue(ViewSpending.class);
+                    viewSpending.setId(child.getKey());
                     mListSpendingHistory.add(viewSpending);
                 }
                 bindData(mListSpendingHistory);
@@ -365,6 +365,7 @@ public class DayFragment extends Fragment implements SpendingInterface, IClickIt
 
         TextView tvCancel = view.findViewById(R.id.tvCancel);
         TextView tvAddSpending = view.findViewById(R.id.tvAddSpending);
+        tvAddSpending.setText(R.string.editAction);
 
         Spinner spinner1 = view.findViewById(R.id.spnCategory);
         Switch swChangeClassify = view.findViewById(R.id.swChangeClassify);
@@ -444,7 +445,8 @@ public class DayFragment extends Fragment implements SpendingInterface, IClickIt
         tvAddSpending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                spendingPresenter.actionSpending(viewSpending,spinnerClassify, spinnerCategory, edtAmount, edtDaySpending, edtNote, isIncome);
+                spendingPresenter.actionSpending(viewSpending, spinnerClassify, spinnerCategory, edtAmount, edtDaySpending, edtNote, isIncome);
+                alertDialog.dismiss();
             }
         });
 

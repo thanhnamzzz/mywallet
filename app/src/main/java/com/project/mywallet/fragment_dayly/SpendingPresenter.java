@@ -1,6 +1,7 @@
 package com.project.mywallet.fragment_dayly;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class SpendingPresenter {
     private SpendingInterface spendingInterface;
@@ -25,10 +28,10 @@ public class SpendingPresenter {
         this.currentAccount = getCurrentAccount();
     }
 
-    public void pushSpending(String accountSeletion,String categorySelection, EditText edtAmount, EditText edtDaySpending, EditText edtNote, boolean isIncome) {
+    public void pushSpending(String accountSeletion, String categorySelection, EditText edtAmount, EditText edtDaySpending, EditText edtNote, boolean isIncome) {
         //Hàm getCurrentAccount này chỉ được gọi khi nào push nếu chưa gọi đến push thì nó sẽ null đúng k
         String checkAmount = edtAmount.getText().toString().trim();
-        if(!TextUtils.isEmpty(checkAmount)) {
+        if (!TextUtils.isEmpty(checkAmount)) {
             UserSpending userSpending = new UserSpending();
             userSpending.setAccount(accountSeletion);
             userSpending.setCategory(categorySelection);
@@ -39,7 +42,7 @@ public class SpendingPresenter {
             databaseReference = firebaseDatabase.getReference(currentAccount);
             databaseReference.push().setValue(userSpending);
             spendingInterface.onSucces("Thêm khoản chi tiêu thành công");
-        }else {
+        } else {
             spendingInterface.onFailed("Nhập số tiền");
         }
     }
@@ -47,84 +50,27 @@ public class SpendingPresenter {
     @NonNull
     public String getCurrentAccount() {
         String email = mAuth.getCurrentUser().getEmail();
-        currentAccount = email.substring(0,email.indexOf("@"));
+        currentAccount = email.substring(0, email.indexOf("@"));
         return currentAccount;
     }
 
-    //Hàm này e dùng làm gì
-    //để update dữ liệu mình chỉnh sửa đấy
-
-    public void actionSpending(ViewSpending viewSpending, String accountSeletion, String categorySelection, EditText edtAmount, EditText edtDaySpending, EditText edtNote, boolean isIncome){
-        //Ở đây nó đang bị null nè
+    public void actionSpending(ViewSpending viewSpending, String accountSeletion, String categorySelection, EditText edtAmount, EditText edtDaySpending, EditText edtNote, boolean isIncome) {
         databaseReference = firebaseDatabase.getReference(currentAccount);
         String checkAmount = edtAmount.getText().toString().trim();
 
-        databaseReference.child(viewSpending.getId());
-        String key = databaseReference.push().getKey();
-        //Mình có cách nào lấy được id của child k
-        // :)))
-        // Thôi cái này để sáng mai a check thử
-        // có share được github k e
-        //Cái này mới update chứ nhỉ
-//        databaseReference.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//                if(!TextUtils.isEmpty(checkAmount)) {
-//                    UserSpending userSpending = snapshot.getValue(UserSpending.class);
-//                    userSpending.setAccount(accountSeletion);
-//                    userSpending.setCategory(categorySelection);
-//                    userSpending.setAmount(Integer.parseInt(edtAmount.getText().toString()));
-//                    userSpending.setDaySpending(edtDaySpending.getText().toString());
-//                    userSpending.setNote(edtNote.getText().toString());
-//                    userSpending.setIncome(isIncome);
-//                    databaseReference.push().setValue(userSpending);
-//                    spendingInterface.onSucces("Sửa khoản chi tiêu thành công");
-//                }else {
-//                    spendingInterface.onFailed("Nhập số tiền");
-//                }
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if(!TextUtils.isEmpty(checkAmount)) {
-//                    UserSpending userSpending = snapshot.getValue(UserSpending.class);
-//                    userSpending.setAccount(accountSeletion);
-//                    userSpending.setCategory(categorySelection);
-//                    userSpending.setAmount(Integer.parseInt(edtAmount.getText().toString()));
-//                    userSpending.setDaySpending(edtDaySpending.getText().toString());
-//                    userSpending.setNote(edtNote.getText().toString());
-//                    userSpending.setIncome(isIncome);
-//                    databaseReference.push().setValue(userSpending);
-//                    spendingInterface.onSucces("Sửa khoản chi tiêu thành công");
-//                }else {
-//                    spendingInterface.onFailed("Nhập số tiền");
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        String key = viewSpending.getId();
+
+        UserSpending userSpending = new UserSpending();
+        userSpending.setAccount(accountSeletion);
+        userSpending.setCategory(categorySelection);
+        userSpending.setAmount(Long.parseLong(edtAmount.getText().toString()));
+        userSpending.setDaySpending(edtDaySpending.getText().toString());
+        userSpending.setNote(edtNote.getText().toString());
+        userSpending.setIncome(isIncome);
+        HashMap<String, Object> map = userSpending.toMap();
+
+        HashMap<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put(key, map);
+        databaseReference.updateChildren(childUpdates);
     }
 }
